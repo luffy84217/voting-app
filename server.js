@@ -1,13 +1,14 @@
 'use strict';
 
 var express = require('express');
-var routes = require('./app/routes/index.js');
+var routes = require('./app/config/routes');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
+var dotenv = require('dotenv');
 
 var app = express();
-require('dotenv').load();
+dotenv.config();
 require('./app/config/passport')(passport);
 
 mongoose.connect(process.env.MONGO_URI);
