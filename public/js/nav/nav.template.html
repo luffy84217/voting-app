@@ -1,0 +1,20 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#" ng-click="tab(1)">Voting App</a>
+	</div>
+	<div class="navbar-collapse collapse" uib-collapse="isNavCollapsed" aria-expanded="false" aria-hidden="true" style="height: 0px;">
+		<ul class="nav navbar-nav navbar-right">
+			<li ng-class="isActive(1)" ng-click="tab(1)"><a href="#!/polls"><i class="fa fa-home fa-lg"></i> Home</a></li>
+            <li ng-class="isActive(2)" ng-click="tab(2)" ng-show="isLoggedIn"><a href="#!/mypolls"><i class="fa fa-list fa-lg"></i> My Polls</a></li>
+            <li ng-class="isActive(3)" ng-click="tab(3)" ng-show="isLoggedIn"><a href="#!/newpoll"><i class="fa fa-edit fa-lg"></i> New Poll</a></li>
+            <li ng-hide="isLoggedIn"><a href="/login"><i class="fa fa-sign-in fa-lg"></i> Sign In</a></li>
+            <li ng-show="isLoggedIn"><a href="/logout"><i class="fa fa-sign-out fa-lg"></i> Sign Out</a></li>
+		</ul>
+	</div>
+</nav>

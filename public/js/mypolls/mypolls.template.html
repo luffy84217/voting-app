@@ -1,0 +1,11 @@
+<div class="jumbotron text-center">
+    <h1 class="display-3">Your polls</h1>
+    <p class="lead">Below are polls you own.</p>
+    <p class="lead">Select your poll to see the results and vote</p>
+    <h3 ng-hide="isLoaded"><i class="fa fa-spinner fa-pulse fa-lg"></i>Now Loading...</h3>
+    <div ng-show="isLoaded">
+        <ul class="list-group">
+            <a class="list-group-item" ng-repeat="poll in ownPolls" ng-href="#!/polls/{{poll.data._id}}">{{poll.data.title}}</a>
+        </ul>
+    </div>
+</div>

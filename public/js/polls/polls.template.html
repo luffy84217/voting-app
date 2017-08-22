@@ -1,0 +1,12 @@
+<div class="jumbotron text-center">
+    <h1 class="display-3">Voting App</h1>
+    <p class="lead">Below are polls hosted by luffy84217.</p>
+    <p class="lead">Select a poll to see the results and vote.</p>
+    <p><a class="btn btn-lg btn-success" href="/login" role="button" ng-hide="isLoggedIn"><i class="fa fa-github fa-lg"></i> Sign up with Github</a></p>
+    <h3 ng-hide="isLoaded"><i class="fa fa-spinner fa-pulse fa-lg"></i>Now Loading...</h3>
+    <div ng-show="isLoaded">
+        <ul class="list-group">
+            <a class="list-group-item" ng-repeat="poll in polls" ng-href="#!/polls/{{poll._id}}">{{poll.title}}</a>
+        </ul>
+    </div>
+</div>

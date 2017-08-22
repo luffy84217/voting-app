@@ -1,0 +1,28 @@
+<div class="jumbotron text-center">
+    <h1>{{poll.title}}</h1>
+    <hr>
+    <h3 ng-hide="isLoaded"><i class="fa fa-spinner fa-pulse fa-lg"></i>Now Loading...</h3>
+    <div ng-show="isLoaded" class="row">
+        <div class="col-sm-7">
+            <div class="chart-wrapper">
+                <canvas id="poll-chart" class="chartjs"></canvas>
+                <script type="text/javascript" src="/public/js/poll/pollChart.js"></script>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <form id="form-vote">
+                <label>I'd like to vote for:</label>
+                <select id="select-options" class="form-control" name="votepicker" ng-model="selected">
+                    <option value="" disabled="disabled" selected="selected" hidden="">Choose an option... </option>
+                    <option ng-repeat="option in poll.options" ng-value="{{$index}}">{{option.name}}</option>
+                </select>
+                <br>
+                <button class="btn btn-success btn-block" ng-click="vote()">Submit</button>
+                <br>
+                <a class="btn btn-primary btn-block" target="_blank" ng-href="https://www.facebook.com/sharer/sharer.php?u={{absUrl}}"><i class="fa fa-facebook fa-lg"></i> Share on Facebook</a>
+                <br>
+                <button class="btn btn-danger btn-block" ng-click="removePoll()" ng-show="isOwned">Remove Poll</button>
+            </form>
+        </div>
+    </div>
+</div>

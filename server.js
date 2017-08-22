@@ -1,13 +1,15 @@
 'use strict';
 
-var express = require('express');
-var routes = require('./app/config/routes');
-var mongoose = require('mongoose');
-var passport = require('passport');
-var session = require('express-session');
-var dotenv = require('dotenv');
+const express = require('express');
+const routes = require('./app/config/routes');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const session = require('express-session');
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
-var app = express();
+const app = express();
 dotenv.config();
 require('./app/config/passport')(passport);
 
@@ -18,8 +20,13 @@ app.use('/controllers', express.static(process.cwd() + '/app/controllers'));
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use('/common', express.static(process.cwd() + '/app/common'));
 
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+app.use(cookieParser(process.env.COOKIE_SECRET));
+
 app.use(session({
-	secret: 'secretClementine',
+	secret: process.env.SESSION_SECRET,
 	resave: false,
 	saveUninitialized: true
 }));
@@ -29,7 +36,7 @@ app.use(passport.session());
 
 routes(app, passport);
 
-var port = process.env.PORT || 8080;
-app.listen(port,  function () {
-	console.log('Node.js listening on port ' + port + '...');
+const port = process.env.PORT || 8080;
+app.listen(port,  () => {
+	console.log(`Node.js listening on port ${port} ...`);
 });

@@ -6,14 +6,14 @@
    var profileUsername = document.querySelector('#profile-username') || null;
    var profileRepos = document.querySelector('#profile-repos') || null;
    var displayName = document.querySelector('#display-name');
-   var apiUrl = appUrl + '/api/:id';
+   var apiUrl = appUrl + '/api/users/:uid';
 
    function updateHtmlElement (data, element, userProperty) {
       element.innerHTML = data[userProperty];
    }
 
    ajaxFunctions.ready(ajaxFunctions.ajaxRequest('GET', apiUrl, function (data) {
-      var userObject = JSON.parse(data);
+      var userObject = JSON.parse(data).github;
 
       if (userObject.displayName !== null) {
          updateHtmlElement(userObject, displayName, 'displayName');
