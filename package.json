@@ -24,6 +24,10 @@
   "scripts": {
     "start": "node server.js"
   },
+  "engines": [
+    "node",
+    "npm"
+  ],
   "author": "Fu Chuan Yu",
   "license": "MIT",
   "dependencies": {
