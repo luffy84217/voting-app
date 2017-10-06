@@ -21,13 +21,13 @@
     "angular-ui-bootstrap",
     "chart.js"
   ],
+  "engines": {
+    "node": "6.11.1",
+    "npm": "3.10.10"
+  },
   "scripts": {
     "start": "node server.js"
   },
-  "engines": [
-    "node",
-    "npm"
-  ],
   "author": "Fu Chuan Yu",
   "license": "MIT",
   "dependencies": {
